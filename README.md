@@ -1,7 +1,7 @@
 # Django-Practices
 
 <div>
-<img src="https://www.djangoproject.com/m/img/logos/django-logo-positive.png"></img>
+<img src="https://www.djangoproject.com/m/img/logos/django-logo-positive.png" style="height:80px;"></img>
 </div>
 
 ## install venv
