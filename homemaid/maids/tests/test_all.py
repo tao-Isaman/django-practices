@@ -22,11 +22,11 @@ class TestMaid(TestCase):
         # When
         maid = Maid.objects.last()
         # Then
-        self.assertEqual(maid.name, "BB")
-        self.assertEqual(maid.birtdate, date(1998, 4, 29))
-        self.assertEqual(maid.description, "Super mad of the Year")
-        self.assertEqual(maid.certificate, "Best Maid 2020")
-        self.assertEqual(maid.salary, 3000)
+        assert maid.name == "BB"
+        assert maid.birtdate == date(1998, 4, 29)
+        assert maid.description == "Super mad of the Year"
+        assert maid.certificate == "Best Maid 2020"
+        assert maid.salary == 3000
 
     def test_model_should_have_image_defined_fields(self):
         # Given
@@ -43,7 +43,7 @@ class TestMaid(TestCase):
         # When
         maid = Maid.objects.last()
         # Then
-        self.assertEqual(maid.profile_image.name, 'profile.png')
+        assert maid.profile_image.name == 'profile.png'
         # os.remove('profile.png')
 
     def test_model_should_have_created_and_modified_fields(self):
@@ -61,6 +61,6 @@ class TestMaid(TestCase):
         # When
         maid = Maid.objects.last()
         # Then
-        self.assertTrue(maid.created)
-        self.assertTrue(maid.modified)
-        # os.remove('profile.png')
+
+        assert maid.created is not None
+        assert maid.modified is not None
