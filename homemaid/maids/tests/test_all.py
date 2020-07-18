@@ -46,7 +46,7 @@ class TestMaid(TestCase):
         self.assertEqual(maid.profile_image.name, 'profile.png')
         # os.remove('profile.png')
 
-    def test_model_should_have_created_and_update_fields(self):
+    def test_model_should_have_created_and_modified_fields(self):
         # Given
         mock = MagicMock(spec=File)
         mock.name = "profile.png"
