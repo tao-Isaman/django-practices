@@ -1,5 +1,9 @@
 # Django-Practices
 
+<div>
+<img src="https://www.djangoproject.com/m/img/logos/django-logo-positive.png"></img>
+</div>
+
 ## install venv
 
 ```
