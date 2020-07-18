@@ -1,5 +1,5 @@
 
-x = int(input("Enter number : "))
+x = 5
 if x % 3 == 0 and x % 5 == 0 :
     print("FizzBuzz")
 elif x % 3 == 0 :
@@ -23,5 +23,11 @@ say()
 def say(number:int):
     print(f'hi {number}')
 say(5)
+
+
+
+
+
+print(__name__)
 
 
