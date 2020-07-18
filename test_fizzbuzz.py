@@ -21,12 +21,12 @@ class TestFizzBuzz(ut.TestCase):
     def test_Input15SholdBeShowFizzBuzz(self):
         result = fizzbuzz(15)
         self.assertEqual(result , "FizzBuzz")
-        
+
     def test_Input450SholdBeShowFizzBuzz(self):
         result = fizzbuzz(450)
         self.assertEqual(result , "FizzBuzz")
 
-ut.main()
+# ut.main()
 
 
 

@@ -22,4 +22,4 @@ class TestPrintRandomNumber(unittest.TestCase):
         result = print_random_number()
         self.assertEqual(result , "five")
 
-unittest.main()
+# unittest.main()
