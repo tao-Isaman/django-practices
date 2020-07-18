@@ -1,6 +1,5 @@
 from datetime import date
 from unittest.mock import MagicMock
-import os
 
 from django.test import TestCase
 from django.core.files import File
@@ -20,10 +19,8 @@ class TestMaid(TestCase):
             certificate="Best Maid 2020",
             salary=3000
         )
-
         # When
         maid = Maid.objects.last()
-
         # Then
         self.assertEqual(maid.name, "BB")
         self.assertEqual(maid.birtdate, date(1998, 4, 29))
@@ -31,22 +28,20 @@ class TestMaid(TestCase):
         self.assertEqual(maid.certificate, "Best Maid 2020")
         self.assertEqual(maid.salary, 3000)
 
-        def test_model_should_have_image_defined_fields(self):
-            # Given
-            mock = MagicMock(spec=File)
-            mock.name = "profile.png"
-            Maid.objects.create(
-                name="BB",
-                profile_image=mock.name,
-                birtdate=date(1998, 4, 29),
-                description="Super mad of the Year",
-                certificate="Best Maid 2020",
-                salary=3000
-            )
-
+    def test_model_should_have_image_defined_fields(self):
+        # Given
+        mock = MagicMock(spec=File)
+        mock.name = "profile.png"
+        Maid.objects.create(
+            name="BB",
+            profile_image=mock.name,
+            birtdate=date(1998, 4, 29),
+            description="Super mad of the Year",
+            certificate="Best Maid 2020",
+            salary=3000
+        )
         # When
-            maid = Maid.objects.last()
-
+        maid = Maid.objects.last()
         # Then
-            self.assertEqual(maid.profile_image.name, 'profile.png')
-            os.remove('profile.png')
+        self.assertEqual(maid.profile_image.name, 'profile.png')
+        # os.remove('profile.png')
