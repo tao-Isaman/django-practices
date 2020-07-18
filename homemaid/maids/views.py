@@ -2,8 +2,14 @@
 from django.http import HttpResponse
 from django.views import View
 
+from .models import Maid
+
 # Create your views here.
 
+
 class MaidListView(View):
-    def get(self , request):
-        return HttpResponse()
+    def get(self, request):
+        html = ""
+        for m in Maid.objects.all():
+            html += f'<li>{m.name}</li>'
+        return HttpResponse(html)
