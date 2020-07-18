@@ -44,7 +44,6 @@ class TestMaid(TestCase):
         maid = Maid.objects.last()
         # Then
         assert maid.profile_image.name == 'profile.png'
-        # os.remove('profile.png')
 
     def test_model_should_have_created_and_modified_fields(self):
         # Given
@@ -60,7 +59,7 @@ class TestMaid(TestCase):
         )
         # When
         maid = Maid.objects.last()
-        # Then
 
+        # Then
         assert maid.created is not None
         assert maid.modified is not None
