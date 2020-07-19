@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, request
 from django.views import View
+from django.core.mail import send_mail
 
 from .models import Maid
 from .form import MaidForm
@@ -32,6 +33,14 @@ class MaidAdd(View):
         form = MaidForm(request.POST)
         if form.is_valid():
             form.save()
+        send_mail(
+            'Subject here',
+            'Here is the message.',
+            'from@example.com',
+            ['to@example.com'],
+            fail_silently=False,
+        )
+
         return HttpResponse()
 
 
