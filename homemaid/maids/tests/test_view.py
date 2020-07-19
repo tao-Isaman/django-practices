@@ -1,7 +1,10 @@
 from datetime import date
 from unittest.mock import patch
+
 from django.test import TestCase
 from django.urls import reverse
+
+from rest_framework.test import APIClient
 
 from ..models import Maid
 
@@ -116,3 +119,10 @@ class testMaidView(TestCase):
 
         mock.assert_called_once_with('Subject here', 'Here is the message.',
                                      'from@example.com', ['to@example.com'], fail_silently=False)
+
+
+class TestMaidAPIView(TestCase):
+    def test_api_view_should_return_200(self):
+        client = APIClient()
+        response = client.get(reverse('maid-list-api'))
+        assert response.status_code == 200

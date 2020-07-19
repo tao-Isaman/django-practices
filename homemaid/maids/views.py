@@ -3,6 +3,9 @@ from django.http import HttpResponse, request
 from django.views import View
 from django.core.mail import send_mail
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 from .models import Maid
 from .form import MaidForm
 
@@ -42,6 +45,11 @@ class MaidAdd(View):
         )
 
         return HttpResponse()
+
+
+class MaidListAPIView(APIView):
+    def get(self, request):
+        return Response()
 
 
 def maid_another_list_view(request):
