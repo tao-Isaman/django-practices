@@ -38,9 +38,9 @@ class testMaidListAnotherView(TestCase):
     def test_view_should_display_maid_list(self):
         response = self.client.get(reverse('maid-another-list'))
         assert response.status_code == 200
-    
+
     def test_ciew_should_display_maid_list(self):
-            # Given
+        # Given
         Maid.objects.create(
             name="BB",
             birtdate=date(1998, 4, 29),
@@ -60,3 +60,31 @@ class testMaidListAnotherView(TestCase):
         # Then
         assert '<li>BB</li>' in str(responese.content)
         assert '<li>CC</li>' in str(responese.content)
+
+
+class testMaidView(TestCase):
+    def test_view_should_response_200(self):
+        response = self.client.get(reverse('maid_add'))
+        assert response.status_code == 200
+
+    def test_view_should_have_maid_form(self):
+        response = self.client.get(reverse('maid_add'))
+        print(response.content)
+        assert '<input type="hidden" name="csrfmiddlewaretoken"' in str(
+            response.content)
+
+        assert '<form action="." method="POST">' in str(response.content)
+
+        name_field = 'input type="text" name="name" maxlength="300" required id="id_name"'
+        assert name_field in str(response.content)
+
+        button = '<button type="submit" class="btn btn-primary">Add maids</button>'
+        assert button in str(response.content)
+
+    def test_summit_from_should_save_new_maid(self):
+        data = {
+            'name': 'BB'
+        }
+        self.client.post(reverse('maid_add'), data=data)
+        maid = Maid.objects.last()
+        assert maid.name == 'BB'

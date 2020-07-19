@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %} Maid Add {% endblock %}
+
+{% block content %}
+<form action="." method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-primary">Add maids</button>
+</form>
+{% endblock %}
