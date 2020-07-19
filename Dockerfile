@@ -1,4 +1,4 @@
-FROM python:3.8.4-slim
+FROM python:3.8.4
 
 # ENV PYTHONUNBUFFERED 1
 
@@ -21,11 +21,13 @@ RUN pip install asgiref==3.2.10 \
     six==1.15.0 \
     toml==0.10.1 \
     wcwidth==0.2.5 \
-    zipp==3.1.0 
+    zipp==3.1.0 \
+    uWSGI==2.0.19.1 \
+    djangorestframework==3.11.0
 
 RUN mkdir /app
 COPY . /app/
 WORKDIR /app/
 WORKDIR /app/homemaid
 RUN python manage.py migrate
-CMD ["python manage.py runserver"]
+ENTRYPOINT [ "uwsgi", "--ini" , "uwsgi.ini" ] 
