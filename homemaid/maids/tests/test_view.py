@@ -32,3 +32,9 @@ class TestListView(TestCase):
         # Then
         assert '<li>BB</li>' in str(responese.content)
         assert '<li>CC</li>' in str(responese.content)
+
+
+class testMaidListAnotherView(TestCase):
+    def test_view_should_display_maid_list(self):
+        response = self.client.get(reverse('maid-another-list'))
+        assert response.status_code == 200
