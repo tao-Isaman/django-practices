@@ -8,22 +8,13 @@ from .models import Maid
 
 
 class MaidListView(View):
+    template_name = 'maidlist.html'
+
     def get(self, request):
-        #     html = ""
-        #     for m in Maid.objects.all():
-        #         html += f'<li>{m.name}</li>'
-        #     return HttpResponse(html)
-
-        # ===================================================
-
-        maid_list = []
-        for m in Maid.objects.all():
-            maid_list.append(m.name)
-        template_name = 'maidlist.html'
         context = {
-            'maid_list': maid_list
+            'maid_list': Maid.objects.all()
         }
-        return render(request, template_name, context)
+        return render(request, self.template_name, context)
 
 
 def maid_another_list_view(request):
