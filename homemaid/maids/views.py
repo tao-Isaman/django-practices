@@ -18,7 +18,8 @@ class MaidListView(View):
 
 
 def maid_another_list_view(request):
-    html = ""
-    for m in Maid.objects.all():
-        html += f'<li>{m.name}</li>'
-    return HttpResponse(html)
+    template_name = 'maidlist.html'
+    context = {
+        'maid_list': Maid.objects.all()
+    }
+    return render(request, template_name, context)
