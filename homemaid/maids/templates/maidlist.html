@@ -1,18 +1,12 @@
-{% load static %}
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Maid List</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap-4.5.0-dist/css/bootstrap.css' %}">
-</head>
+{% block title %} Maid List {% endblock %}
 
-<body>
-    {% for maid in maid_list %}
-    <li>{{ maid.name}}</li>
+{% block content %}
+<ul>
+    {% for m in maid_list%}
+    <li>{{m.name}}</li>
     {% endfor %}
 
-    <script src="{% static 'bootstrap-4.5.0-dist/js/bootstrap.min.js' %}"></script>
-
-</body>
-
-</html>
+</ul>
+{% endblock %}
