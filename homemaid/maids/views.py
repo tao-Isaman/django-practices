@@ -19,11 +19,11 @@ class MaidListView(View):
         maid_list = []
         for m in Maid.objects.all():
             maid_list.append(m.name)
-        template = 'maidlist.html'
+        template_name = 'maidlist.html'
         context = {
             'maid_list': maid_list
         }
-        return render(request, template, context)
+        return render(request, template_name, context)
 
 
 def maid_another_list_view(request):
